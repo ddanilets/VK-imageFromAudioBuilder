@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 import express from 'express';
+import bodyParser from 'body-parser';
 import { match, RouterContext } from 'react-router';
 import createHistory from 'react-router/lib/createMemoryHistory';
 import { Provider } from 'react-redux';
@@ -9,13 +10,23 @@ import ReactDOM from 'react-dom/server';
 import configureStore from './src/redux/createStore';
 import Html from './src/html/Html';
 
+import fs from 'fs';
+
 
 const server = express();
 
 server.use('/build', express.static(`${__dirname}/build`));
+server.use(bodyParser.json({ limit: '50mb' }));
 
 server.get('/', (req, res) => {
   res.redirect(301, '/en');
+});
+
+server.post('/users', (req, res) => {
+  console.log(req);
+  fs.writeFile('./users.json', req.body.data, (err) => {
+    console.log(err);
+  });
 });
 
 server.use((req, res) => {
