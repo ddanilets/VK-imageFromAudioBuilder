@@ -17,6 +17,12 @@ export default function (state = initialState, action) {
         userData: payload,
       };
     }
+    case constants.GET_GENRES: {
+      return {
+        ...state,
+        genres: payload,
+      };
+    }
     default: {
       return state;
     }

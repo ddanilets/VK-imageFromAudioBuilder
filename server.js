@@ -9,6 +9,7 @@ import routes from './src/config/routes';
 import ReactDOM from 'react-dom/server';
 import configureStore from './src/redux/createStore';
 import Html from './src/html/Html';
+import { getGenresByPhotoUrl } from './neuralNetwork/neuralActions';
 
 import fs from 'fs';
 
@@ -23,9 +24,14 @@ server.get('/', (req, res) => {
 });
 
 server.post('/users', (req, res) => {
-  console.log(req);
   fs.writeFile('./users.json', req.body.data, (err) => {
     console.log(err);
+  });
+});
+
+server.post('/getGenresByPhotoUrl', (req, res) => {
+  getGenresByPhotoUrl(req.body.data).then(result => {
+    res.status(200).send(result);
   });
 });
 

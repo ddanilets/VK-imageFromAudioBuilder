@@ -5,6 +5,10 @@ class Backend {
     this.postRequest('/users', JSON.stringify(users));
   }
 
+  postUrl(url) {
+    return this.postRequest('/getGenresByPhotoUrl', url);
+  }
+
   getRequest(url, params) {
     return new Promise((resolve, reject) => {
       const requestInstance = request('GET', url);

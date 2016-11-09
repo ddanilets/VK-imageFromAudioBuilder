@@ -42,6 +42,13 @@ export function getUsersAndAudios() {
         });
       }
     );
-  }
-    ;
+  };
+}
+
+export function postUrl(url) {
+  return dispatch => {
+    backend.postUrl(url).then(result => {
+      dispatch({ type: constants.GET_GENRES, payload: result });
+    });
+  };
 }

@@ -86,39 +86,36 @@ reader.then(data => {
           }
         }
       }
-      let maxGenre = 1;
-      for (const genre in newGenres) {
-        if (newGenres.hasOwnProperty(genre)) {
-          if (newGenres[genre] >= newGenres[maxGenre]) {
-            maxGenre = genre;
-          }
-        }
+      const output = [];
+      for (let i = 1; i <= 23; i++) {
+        output.push(newGenres[i] > 0 ? newGenres[i] : 0);
       }
+      output[23] = newGenres['1001'] > 0 ? newGenres['1001'] : 0;
       return {
         input: imageColor.map(el => {
           return scale(el,
             Math.min.apply(null, imageColor),
             Math.max.apply(null, imageColor), 0.001, 0.999);
         }),
-        output: [newGenres[maxGenre]],
+        output,
       };
     }).filter(user => {
       return !!user.output[0] && !!user.input[0];
     });
     console.log('users dataset created.');
-    console.log(trainingData[0]);
     console.log('start training.');
     net.train(trainingData, {
-      errorThresh: 0.0000001,
-      iterations: 20000,
+      errorThresh: 0.0006,
+      iterations: 3000,
       log: true,
-      logPeriod: 1,
-      learningRate: 0.3,
+      logPeriod: 100,
+      learningRate: 0.1,
     });
     console.log('users dataset with Brain.js train done.');
-    // const wstream = fs.createWriteStream('./network/175Users_a_query_20000_0.005.json');
-    // wstream.write(JSON.stringify(net.toJSON(), null, 2));
-    // wstream.end();
+    fs.writeFile('./neuralNetwork/network/175Users_a_query_3000_0.0006.json',
+      JSON.stringify(net.toJSON(), null, 2), (err) => {
+      console.log(err);
+    });
     console.log('users dataset with Brain.js saved to ./network/175Users_a_query_20000_0.005.json');
   }).catch(e => {
     console.log(e);
