@@ -12,7 +12,7 @@ export function login() {
   };
 }
 
-export function getUsersAndAudios() {
+/* export function getUsersAndAudios() {
   return dispatch => {
     VK.Api.call('users.search',
       { q: 'a', fields: 'photo_400_orig,can_see_audio', count: 1000 }, (r) => {
@@ -43,7 +43,7 @@ export function getUsersAndAudios() {
       }
     );
   };
-}
+}*/
 
 export function postUrl(url) {
   return dispatch => {
@@ -51,4 +51,8 @@ export function postUrl(url) {
       dispatch({ type: constants.GET_GENRES, payload: result });
     });
   };
+}
+
+export function changeLanguage(langauge) {
+  return { type: constants.CHANGE_LANGUAGE, payload: langauge };
 }

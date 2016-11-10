@@ -19,7 +19,10 @@ const Html = (props) => {
   const content = props.component ? ReactDOM.renderToString(props.component) : '';
   const state = props.store.getState();
   return (<html>
-    <head />
+    <head>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css" />
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap-theme.min.css" />
+    </head>
     <body>
       <div dangerouslySetInnerHTML={{ __html: content }} id="app" />
       <script src="https://vk.com/js/api/openapi.js?136" type="text/javascript"></script>

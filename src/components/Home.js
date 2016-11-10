@@ -1,21 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Button } from 'react-bootstrap';
+import { Button, FormControl } from 'react-bootstrap';
 import { postUrl } from '../redux/application/actions';
 
-function decimalAdjust(type, value, exp) {
+function decimalAdjust(value, exp) {
   if (typeof exp === 'undefined' || +exp === 0) {
-    return Math[type](value);
+    return Math.round(value);
   }
-  value = +value;
-  exp = +exp;
-  if (isNaN(value) || !(typeof exp === 'number' && exp % 1 === 0)) {
+  let newValue = +value;
+  const newExp = +exp;
+  if (isNaN(newValue) || !(typeof newExp === 'number' && newExp % 1 === 0)) {
     return NaN;
   }
-  value = value.toString().split('e');
-  value = Math[type](+(value[0] + 'e' + (value[1] ? (+value[1] - exp) : -exp)));
-  value = value.toString().split('e');
-  return +(value[0] + 'e' + (value[1] ? (+value[1] + exp) : exp));
+  newValue = newValue.toString().split('e');
+  newValue = Math.round(+(`${newValue[0]}e${(newValue[1] ? (+newValue[1] - newExp) : -newExp)}`))
+    .toString().split('e');
+  return +(`${newValue[0]}e${(newValue[1] ? (+newValue[1] + newExp) : newExp)}`);
 }
 
 class Home extends React.Component {
@@ -30,13 +30,13 @@ class Home extends React.Component {
 
   render() {
     const genres = this.props.genres.map((el, key) => {
-      return <li key={key}>{el.genre} - {decimalAdjust('round', el.value * 100, -2)}%</li>;
+      return <li key={key}>{el.genre} - {decimalAdjust(el.value * 100, -2)}%</li>;
     });
 
     return (
       <div>
         <Button onClick={this.postImgUrl}>send</Button>
-        <input type="text" ref="input" />
+        <FormControl type="text" ref="input" />
         <ul>{genres}</ul>
       </div>
     );

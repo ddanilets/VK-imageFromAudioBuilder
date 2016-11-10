@@ -23,6 +23,12 @@ export default function (state = initialState, action) {
         genres: payload,
       };
     }
+    case constants.CHANGE_LANGUAGE: {
+      return {
+        ...state,
+        language: payload,
+      };
+    }
     default: {
       return state;
     }
