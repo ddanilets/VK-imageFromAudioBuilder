@@ -30,6 +30,7 @@ server.post('/users', (req, res) => {
 });
 
 server.post('/getGenresByPhotoUrl', (req, res) => {
+  console.log(req.body);
   getGenresByPhotoUrl(req.body.data).then(result => {
     res.status(200).send(result);
   });

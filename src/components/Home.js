@@ -36,7 +36,7 @@ class Home extends React.Component {
     return (
       <div>
         <Button onClick={this.postImgUrl}>send</Button>
-        <FormControl type="text" ref="input" />
+        <input type="text" ref="input" />
         <ul>{genres}</ul>
       </div>
     );
