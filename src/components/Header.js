@@ -63,8 +63,7 @@ class Header extends React.Component {
       return <NavItem eventKey={key} key={key} title={link.localized}>{link.localized}</NavItem>;
     });
     return (
-      <Row>
-        <Col lg={6} lgPush={6} md={6} mdPush={6} sm={6} smPush={6} xs={10} xsPush={2}>
+      <Row style={{marginTop: '10px'}}>
           <Nav justified pullRight bsStyle="pills" activeKey={revealActivePage()}
                onSelect={(e) => {
                  this.navigate(e, links);
@@ -73,7 +72,6 @@ class Header extends React.Component {
             {menuItems}
             {this.renderLocaleDropdown()}
           </Nav>
-        </Col>
       </Row>
     );
   }
