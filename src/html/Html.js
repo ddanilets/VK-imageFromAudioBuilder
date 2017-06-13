@@ -25,10 +25,7 @@ const Html = (props) => {
     </head>
     <body>
       <div dangerouslySetInnerHTML={{ __html: content }} id="app" />
-      <script src="https://vk.com/js/api/openapi.js?136" type="text/javascript"></script>
-      <script type="text/javascript"
-        dangerouslySetInnerHTML={{ __html: 'VK.init({apiId: 5717440 });' }}
-      />
+      
       <script dangerouslySetInnerHTML={{ __html: `window.App=${serialize(state)};` }} />
       {renderJsFiles().map((file, key) => {
         return <script key={key} type="text/javascript" src={file} />;

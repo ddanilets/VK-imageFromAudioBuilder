@@ -47,6 +47,7 @@ export function login() {
 
 export function postUrl(url) {
   return dispatch => {
+    console.log(url, 'actions')
     backend.postUrl(url).then(result => {
       dispatch({ type: constants.GET_GENRES, payload: result });
     });
