@@ -26,6 +26,7 @@
     "brain.js": "^0.7.0",
     "express": "^4.14.0",
     "jimp": "^0.2.27",
+    "lodash": "^4.17.4",
     "react": "^15.3.2",
     "react-bootstrap": "^0.30.5",
     "react-dom": "^15.3.2",

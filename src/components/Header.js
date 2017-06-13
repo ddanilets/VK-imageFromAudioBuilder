@@ -43,6 +43,7 @@ class Header extends React.Component {
       localized: getLocale(this.props.language, 'navigation.home'),
       route: `/${this.props.language}`,
       routeWithoutLang: '',
+      
     }, {
       name: 'app',
       localized: getLocale(this.props.language, 'navigation.app'),
@@ -60,11 +61,11 @@ class Header extends React.Component {
       return key;
     };
     const menuItems = links.map((link, key) => {
-      return <NavItem eventKey={key} key={key} title={link.localized}>{link.localized}</NavItem>;
+      return <NavItem eventKey={key} key={key} title={link.localized} className={'tab'} id={link.name}>{link.localized}</NavItem>;
     });
     return (
-      <Row style={{marginTop: '10px'}}>
-          <Nav justified pullRight bsStyle="pills" activeKey={revealActivePage()}
+      <Row >
+          <Nav justified  bsStyle="pills" activeKey={revealActivePage()} 
                onSelect={(e) => {
                  this.navigate(e, links);
                }}
@@ -84,7 +85,7 @@ class Header extends React.Component {
         </MenuItem>);
     });
     return (
-      <NavDropdown id="menu" title={getLocale(this.props.language, 'language')}>
+      <NavDropdown id="menu" className={'tab'} title={getLocale(this.props.language, 'language')}>
         {locales}
       </NavDropdown>
     );
@@ -92,14 +93,12 @@ class Header extends React.Component {
 
   renderHeader() {
     return (
-      <Row>
-        <Col lg={6} lgPush={3} lgPull={3} md={8} mdPush={2}
-          mdPull={2} sm={10} smPush={2} smPull={2} xs={12}
-        >
+      <Row className="title">
+
           <h1>
             {getLocale(this.props.language, `${this.props.pageName}.header.title`)}
           </h1>
-        </Col>
+
       </Row>
     );
   }
@@ -122,7 +121,12 @@ class Header extends React.Component {
         {this.renderNavMenu()}
         <Row>
           {this.renderHeader()}
+          <Col lg={6} lgPush={3} lgPull={3} md={8} mdPush={2}
+            mdPull={2} sm={10} smPush={2} smPull={2} xs={12}
+            className="main-content"
+          >
           {this.renderContent()}
+          </Col>
         </Row>
       </Grid>
     );

@@ -34,9 +34,9 @@ class Home extends React.Component {
     });
 
     return (
-      <div>
-        <Button onClick={this.postImgUrl}>send</Button>
-        <input type="text" ref="input" />
+      <div className="input-content">
+        <Button className="send-button" onClick={this.postImgUrl}>Send</Button>
+        <input className="photo-input" type="text" ref="input" />
         <ul>{genres}</ul>
       </div>
     );

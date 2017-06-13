@@ -6,6 +6,7 @@ import { browserHistory } from 'react-router';
 import DevTools from './src/redux/DevTools';
 import { Provider } from 'react-redux';
 import routes from './src/config/routes';
+import './style.scss';
 
 
 const { store, history } = configureStore(browserHistory, window.App);
