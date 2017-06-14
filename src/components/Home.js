@@ -30,14 +30,14 @@ class Home extends React.Component {
 
   render() {
     const genres = this.props.genres.map((el, key) => {
-      return <li key={key}>{el.genre} - {decimalAdjust(el.value * 100, -2)}%</li>;
+      return <li key={key}>{el.genre} - <strong>{decimalAdjust(el.value * 100, -2)}%</strong></li>;
     });
 
     return (
       <div className="input-content">
         <Button className="send-button" onClick={this.postImgUrl}>Send</Button>
         <input className="photo-input" type="text" ref="input" />
-        <ul>{genres}</ul>
+        <ul className="genres-list">{genres}</ul>
       </div>
     );
   }

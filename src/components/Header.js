@@ -85,7 +85,7 @@ class Header extends React.Component {
         </MenuItem>);
     });
     return (
-      <NavDropdown id="menu" className={'tab'} title={getLocale(this.props.language, 'language')}>
+      <NavDropdown id="menu" className="tab" title={getLocale(this.props.language, 'language')}>
         {locales}
       </NavDropdown>
     );
