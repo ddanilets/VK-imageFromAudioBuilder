@@ -1,0 +1,139 @@
+@import url( 'https://fonts.googleapis.com/css?family=Open+Sans');
+$font-stack: 'Open Sans', sans-serif;
+
+html  {  
+    height: 100%;
+    font-family: $font-stack;
+
+    input, textarea {
+        font-family: $font-stack;
+    }
+}
+
+body {  
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: #222222;
+    color: white;
+}
+
+#app {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    
+}
+
+.container {
+    width: 100%;
+}
+
+
+.nav{
+    background-color: #6cc72c;
+    width: 100%;
+    height: 75px;
+    background-color: #6cc72c;
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: center;
+    border-bottom: 3px solid #222222;
+    z-index: 2;
+
+
+    
+    .tab{
+        margin: 0 25px;
+        background-color: white;
+        border: 2px solid #222222;
+        border-bottom: none;
+        width: 188px;
+        a {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                text-transform: uppercase;
+                color: black;
+                cursor: pointer;
+                
+                border-radius: 0px; 
+        }
+        &.active>a  {
+            &, &:hover, &:focus {
+                background-color: #222222;
+                color: #f8fcff;
+            }         
+        }
+
+        a:hover  {
+            background-color: white;
+        }
+
+    }
+}   
+
+.title{
+    margin-top: 75px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: center;
+
+    h1 {
+        align-self: center;
+
+    }
+}
+
+.main-content{
+    font-size: 20px;
+    margin: 20px 0;
+}
+
+.input-content{
+    margin-left: 340px;
+    .send-button {
+            padding: 1vh 2vw;
+            border-radius: 70px;
+            text-align: center;
+            font-weight: bold;
+            border: 3px solid ;
+
+            font-size: 2vh;
+            opacity: 0.7;
+            cursor: pointer;
+            outline: none;
+
+
+            // &:hover {
+            //     background-color: #18bbac;
+            //     color: white;
+            //     opacity: 1;
+            // }
+    }
+
+    .photo-input{
+        width: 50%;
+        align-self: center;
+        padding: 10px;
+        background-color: #2f2f2f;
+        border: none;
+        font-size: 1.3vw;
+        border-radius: 15px;
+        color: #757575;
+        text-align: center; 
+        margin: 0 50px 50px;
+        &:focus {
+            background-color: white;
+            outline-color: #1e1e1e;
+        }
+    }
+}
+
+
